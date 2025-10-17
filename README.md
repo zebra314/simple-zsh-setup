@@ -7,7 +7,7 @@ This script automates the installation and configuration of Zsh, Oh My Zsh, and 
 ## Usage
 
 ```sh
-bash <(curl -fsSL https://raw.githubusercontent.com/zebra314/simple-zsh-setup/main/run.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/zebra314/simple-zsh-setup/main/setup.sh)
 ```
 
 ## Install List
