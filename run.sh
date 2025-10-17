@@ -119,10 +119,13 @@ if [ ! -f "$TMUX_CONF" ]; then
 fi
 
 # Ensure TPM load line exists
-if ! grep -q "run '~/.tmux/plugins/tpm/tpm'" "$TMUX_CONF"; then
+if ! grep -q "tmux-plugins/tpm" "$TMUX_CONF"; then
     echo "" >> "$TMUX_CONF"
-    echo "# Initialize TPM plugin manager" >> "$TMUX_CONF"
-    echo "run '~/.tmux/plugins/tpm/tpm'" >> "$TMUX_CONF"
+    echo "set -g @plugin 'tmux-plugins/tpm'" >> "$TMUX_CONF"
+fi
+
+if ! grep -q "tmux-plugins/tmux-sensible" "$TMUX_CONF"; then
+    echo "set -g @plugin 'tmux-plugins/tmux-sensible'" >> "$TMUX_CONF"
 fi
 
 # Add Catppuccin plugin
@@ -132,6 +135,13 @@ if ! grep -q "catppuccin/tmux" "$TMUX_CONF"; then
     echo "set -g @plugin 'catppuccin/tmux#v2.1.3'" >> "$TMUX_CONF"
     echo "set-option -g status-position top" >> "$TMUX_CONF"
     echo "set -g @catppuccin_window_status_style "rounded"" >> "$TMUX_CONF"
+fi
+
+# Check the end line of tmux.conf for TPM initialization
+if ! grep -q "run '~/.tmux/plugins/tpm/tpm'" "$TMUX_CONF"; then
+    echo "" >> "$TMUX_CONF"
+    echo "# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)" >> "$TMUX_CONF"
+    echo "run '~/.tmux/plugins/tpm/tpm'" >> "$TMUX_CONF"
 fi
 
 # Configure .zshrc
