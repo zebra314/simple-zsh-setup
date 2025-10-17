@@ -32,7 +32,7 @@ echo "Detected OS: $OS"
 
 # Install dependencies
 echo "Installing dependencies..."
-$PKG git curl wget
+$PKG git curl wget fontconfig
 
 # Install zsh
 if ! command -v zsh >/dev/null 2>&1; then
