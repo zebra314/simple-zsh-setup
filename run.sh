@@ -157,11 +157,6 @@ if [ -f "$ZSHRC" ]; then
     if grep -q '^plugins=(' "$ZSHRC"; then
         sed -i 's|^plugins=([^)]*)|plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions tmux)|' "$ZSHRC"
     fi
-
-    # Enable tmux auto-start
-    if ! grep -q "ZSH_TMUX_AUTOSTART=true" "$ZSHRC"; then
-        sed -i '/^ZSH_THEME=/a ZSH_TMUX_AUTOSTART=true' "$ZSHRC"
-    fi
 fi
 
 # Set up zsh as default shell
