@@ -67,9 +67,9 @@ else
 fi
 
 # Configure p10k theme
-if [ -f "$ZSHRC" ] && ! grep -q "source ~/.config/p10k/.p10k.zsh" "$ZSHRC"; then
+if [ -f "$ZSHRC" ] && ! grep -q "source ~/.p10k.zsh" "$ZSHRC"; then
     echo "Adding p10k configuration to .zshrc..."
-    echo '[[ ! -f ~/.config/p10k/.p10k.zsh ]] || source ~/.config/p10k/.p10k.zsh' >> "$ZSHRC"
+    echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> "$ZSHRC"
 fi
 
 # Install zsh plugins
@@ -124,6 +124,8 @@ if ! grep -q "catppuccin/tmux" "$TMUX_CONF"; then
     echo "" >> "$TMUX_CONF"
     echo "# Catppuccin tmux theme" >> "$TMUX_CONF"
     echo "set -g @plugin 'catppuccin/tmux#v2.1.3'" >> "$TMUX_CONF"
+    echo "set-option -g status-position top" >> "$TMUX_CONF"
+    echo "set -g @catppuccin_window_status_style "rounded"" >> "$TMUX_CONF"
 fi
 
 # Configure .zshrc
