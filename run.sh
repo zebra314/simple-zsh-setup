@@ -7,16 +7,22 @@ THEME_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 PLUGIN_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
 TMUX_CONF="$HOME/.tmux.conf"
 
+if [ "$(id -u)" -eq 0 ]; then
+    SUDO=""
+else
+    SUDO="sudo"
+fi
+
 # Detect OS
 if [ -f /etc/arch-release ]; then
     OS="arch"
-    PKG="sudo pacman -S --noconfirm"
+    PKG="$SUDO pacman -S --noconfirm"
 elif [ -f /etc/debian_version ]; then
     OS="debian"
-    PKG="sudo apt install -y"
+    PKG="$SUDO apt install -y"
 elif [ -f /etc/fedora-release ]; then
     OS="fedora"
-    PKG="sudo dnf install -y"
+    PKG="$SUDO dnf install -y"
 else
     echo "Unsupported Linux distribution."
     exit 1
